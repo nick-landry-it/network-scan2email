@@ -7,7 +7,7 @@ import (
 	gomail "gopkg.in/mail.v2"
 )
 
-func SendMail(from string, password string) {
+func SendMail(from string, password string, body string) {
 	m := gomail.NewMessage()
 
 	// Set E-Mail sender
@@ -17,10 +17,10 @@ func SendMail(from string, password string) {
 	m.SetHeader("To", "example@yahoo.com")
 
 	// Set E-Mail subject
-	m.SetHeader("Subject", "Gomail test subject")
+	m.SetHeader("Subject", "Public IP Update")
 
 	// Set E-Mail body. You can set plain text or html with text/html
-	m.SetBody("text/plain", "This is Gomail test body")
+	m.SetBody("text/plain", "Your current public IP is "+body+"!")
 
 	// Settings for SMTP server
 	d := gomail.NewDialer("smtp.mail.yahoo.com", 587, from, password)
