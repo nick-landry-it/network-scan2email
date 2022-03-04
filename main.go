@@ -16,6 +16,7 @@ func check(e error) {
 }
 
 func main() {
+	// WIP
 	encryptedEmail, err := os.ReadFile("./encryptedfiles/.encryptedEmail.lck")
 	check(err)
 	encryptedPassword, err := os.ReadFile("./encryptedfiles/.encryptedPassword.lck")
@@ -30,6 +31,5 @@ func main() {
 	fmt.Printf("Decrypted Email : %s\n", decryptedEmail)
 	fmt.Printf("Decrypted Password : %s\n", decryptedPassword)
 
-	a, b := mailer.SendMail(decryptedEmail, decryptedPassword)
-	fmt.Printf("Decrypted from mailer : %s\n%s\n", a, b)
+	mailer.SendMail(decryptedEmail, decryptedPassword)
 }
