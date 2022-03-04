@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"ipupdater/cryptography"
+	"ipupdater/mailer"
 	"ipupdater/networking"
 	"os"
 )
@@ -28,4 +29,7 @@ func main() {
 	decryptedPassword := cryptography.Decrypt(string(encryptedPassword), string(encryptionKey))
 	fmt.Printf("Decrypted Email : %s\n", decryptedEmail)
 	fmt.Printf("Decrypted Password : %s\n", decryptedPassword)
+
+	a, b := mailer.SendMail(decryptedEmail, decryptedPassword)
+	fmt.Printf("Decrypted from mailer : %s\n%s\n", a, b)
 }
